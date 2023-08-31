@@ -4,6 +4,6 @@ const SignIn = () => {
   return (
     <div>ENTER</div>
   )
-}
+};
 
 export default SignIn;

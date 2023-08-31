@@ -1,13 +1,12 @@
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
-import Footer from './components/Footer';
+import Timer from './components/Timer';
 
 function App() {
   return (
     <main className="App">
-      <Routes>
-
-      </Routes>
+      <Timer time={10000}/>
+      
     </main>
   );
 }
