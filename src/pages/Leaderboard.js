@@ -1,11 +1,14 @@
 import React from 'react';
-import Nav from '../components/Nav';
-import Footer from './components/Footer';
-
+import Footer from '../components/Footer';
+import Header from '../components/Header';
 
 const Leaderboard = () => {
   return (
-    <div>Leaderboard</div>
+    <div>
+      <Header/>
+      Leaderboard
+      <Footer/>
+    </div>
   )
 }
 

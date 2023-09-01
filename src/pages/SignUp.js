@@ -1,8 +1,14 @@
 import React from 'react';
+import SignHeader from '../components/SignHeader';
+import { Link } from 'react-router-dom';
 
 const SignUp = () => {
   return (
-    <div>SignUp</div>
+    <div>
+      <SignHeader/>
+      <h2>Sign Up</h2>
+      <Link to="/home">Home</Link>
+    </div>
   )
 };
 

@@ -1,9 +1,11 @@
-import React from 'react'
+import React from 'react';
 
-const Rounds = () => {
+const Rounds = (props) => {
   return (
-    <div>Rounds</div>
+    <section>
+      <h3>{props.round}</h3>
+    </section>
   )
-}
+};
 
-export default Rounds
+export default Rounds;
