@@ -5,6 +5,7 @@ import Footer from '../components/Footer';
 import Header from '../components/Header';
 import Rounds from '../components/Rounds';
 import { Words } from '../components/Words';
+import Nav from '../components/Nav'
 //location where the game is being player
 //has the timer, score, and instructions, rounds
 
@@ -19,6 +20,7 @@ const GameSpace = () => {
   return (
     <div>
       <Header/>
+      <Nav/>
       <Timer/>
       <Rounds round={2}/>
       <Score score={2}/>
