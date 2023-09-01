@@ -1,0 +1,58 @@
+footer{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    background-color: #7b7b7b;
+    color: white;
+    width: 100%;
+}
+
+footer > div{
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    align-items: flex-end;
+
+}
+
+header{
+    text-align: center;
+    background-color: #d1faff;
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+nav{
+    margin-top: 125px;
+    padding: 20px;
+    background-color: #e4e4e4;
+}
+
+nav > a{
+    text-decoration: none;
+    padding: 20px;
+    color: black;
+}
+
+/* unvisited link */
+nav > a:link{
+    background-color: #e4e4e4;
+}
+
+/* visited link */
+nav > a:visited {
+    background-color: #e4e4e4;
+}
+  
+  /* mouse over link */
+nav > a:hover {
+    background-color: #35e7fc;
+}
+/* selected link */
+nav > a:active {
+    background-color: #7b7b7b;
+}
+
+
+
