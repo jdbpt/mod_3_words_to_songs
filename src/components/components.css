@@ -5,14 +5,37 @@ footer{
     background-color: #7b7b7b;
     color: white;
     width: 100%;
+    z-index: 2;
 }
 
 footer > div{
     display: flex;
-    justify-content: center;
-    gap: 20px;
-    align-items: flex-end;
+    justify-content: space-around;
+    gap: 50px;
+    align-items: center;
+    /* flex-wrap: true; */
+    
+   
+}
 
+.outlinks{
+    color: white;
+}
+
+.outlinks:link{
+    color: white;
+}
+.outlinks:visited{
+    text-decoration: none;
+    color: white;
+}
+.outlinks:hover{
+    text-decoration: none;
+    color: #d1faff;
+}
+.outlinks:active{
+    text-decoration: none;
+    color: white;
 }
 
 header{
@@ -21,18 +44,31 @@ header{
     position: fixed;
     top: 0;
     width: 100%;
+    padding-top: 20px;
+    padding-bottom: 10px;
+    z-index: 2;
 }
 
 nav{
-    margin-top: 125px;
-    padding: 20px;
+    display: flex;
+    float: left;
+    flex-direction: column;
     background-color: #e4e4e4;
+    width: 150px;
+    position:sticky;
+    top:150px;
+    z-index: 1;
+    color: black;
+
+    
 }
+
 
 nav > a{
     text-decoration: none;
     padding: 20px;
     color: black;
+    height: 40px;
 }
 
 /* unvisited link */
@@ -51,7 +87,24 @@ nav > a:hover {
 }
 /* selected link */
 nav > a:active {
+    color: white;
     background-color: #7b7b7b;
+}
+
+button{
+    background-color: #35e7fc;
+    width: 200px;
+    border-radius: 20px;
+    height: 40px;
+    margin: 10px;
+    border: 3px solid #7b7b7b;
+    
+
+
+}
+
+button:active{
+    transform: translateY(10px);
 }
 
 

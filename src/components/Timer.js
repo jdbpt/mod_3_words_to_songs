@@ -16,7 +16,7 @@ const Timer = (props) => {
     const startTimer = ()=>{
       const displayTime = function (){
           setClockTime(prvtime=> {
-            return(prvtime>0?prvtime - 1000:prvtime=0&&clearInterval(timer.current))
+            return(prvtime>0?prvtime - 1000:prvtime=0&&clearInterval(timer.current)&&setTimerInUse(false))
           });
         //assist with clock not updateing with useState: https://stackoverflow.com/questions/73056009/react-setinterval-is-re-initialized-to-often
       };//displayTime
@@ -46,10 +46,10 @@ const Timer = (props) => {
       <h1>Clock</h1>
       {/**call handleTime based on time provided, and display it */}
       <h3 className="timer">{(clockTime/1000).toFixed()}</h3>
-      {<button onClick={()=>{
+      <button onClick={()=>{
         setTimerInUse(true);
         startTimer();
-        }}>Start</button>}
+        }}>Start</button>
       <button onClick={()=>resetTimer()}>Reset</button>
 
       {!timerInUse && clockTime <= 0 && 
