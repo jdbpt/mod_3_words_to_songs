@@ -55,8 +55,7 @@
 .leaderboard, .home, .gamespace{
     color: white;
     font-weight: bold;
-    text-decoration: overline;
-    text-decoration-color: black;
     word-wrap: break-word;
+    border: 5px solid #35e7fc;
     
 }

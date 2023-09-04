@@ -7,7 +7,7 @@ const Instructions = () => {
       <h2>Where words spark memories into music!</h2>
       <h2>See instructions below:</h2>
       <h1>Instructions</h1>
-      <ul>
+      <ul className='instructions'>
         <li>At the GameSpace (navigation to the left)</li>
         <li>Select the Number of Rounds 6, 10, or 14</li>
         <li>The Select the Number of Players

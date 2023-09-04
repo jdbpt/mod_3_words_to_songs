@@ -5,7 +5,7 @@ const Footer = () => {
     <footer>
       <div>
         <div>
-          <h3>Created by jdbpt</h3>
+          <h3>Words to Songs: Where words spark memories into music Created by jdbpt</h3>
           <h3>With Use of YouTube API</h3>
         </div>
         <div>
