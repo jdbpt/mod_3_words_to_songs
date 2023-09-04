@@ -17,8 +17,8 @@ Let the words spark memories into songs as you race against the clock and perhap
 ## Credits/Inspirations
 
 - Project created by jdbpt (Jocelyn)
-- Project Inspired by Song Association by Elle [Elle Youtube Page] (https://www.youtube.com/@ELLE)
-- Thanks to Per Scholas for the WISE program!
+- Project Inspired by Song Association by Elle [Elle Youtube Page](https://www.youtube.com/@ELLE)
+- Thanks to [Per Scholas](https://perscholas.org/) for the WISE program!
 
 
 
