@@ -180,44 +180,47 @@ const GameSpace = (props) => {
       else if (currentTeam === TEAM3) {
         setShowTeam3Score(prvscore => prvscore + 1);
       }
-      if (wordsLeft <= 0) {
-        if (teams > 0) {
-          if (currentTeam === TEAM1) {
-            if (teams > 1) {
-              setCurrentTeam(TEAM2);
-              setWordsLeft(numWords);
+    
+    } else {
 
-            } else {
-              setRoundDone(true);
-              console.log("out of words");
-              setRandomWord("Out of Words! Add Another Round or End Game!");
-            }
-            //make game continue to be playable
-            setRoundDone(false);
-          } else if (currentTeam === TEAM2) {
-            if (teams > 2) {
-              setCurrentTeam(TEAM3);
-              setWordsLeft(numWords);
-              setRoundDone(false);
+    }
 
-            } else {
-              setRoundDone(true);
-              console.log("out of words");
-              setRandomWord("Out of Words! Add Another Round or End Game!");
-            }
+    //handle ending the game and changing teams
+    if (wordsLeft <= 0) {
+      if (teams > 0) {
+        if (currentTeam === TEAM1) {
+          if (teams > 1) {
+            setCurrentTeam(TEAM2);
+            setWordsLeft(numWords);
 
-            //make game continue to be playable
           } else {
             setRoundDone(true);
             console.log("out of words");
             setRandomWord("Out of Words! Add Another Round or End Game!");
           }
+          //make game continue to be playable
+          setRoundDone(false);
+        } else if (currentTeam === TEAM2) {
+          if (teams > 2) {
+            setCurrentTeam(TEAM3);
+            setWordsLeft(numWords);
+            setRoundDone(false);
+
+          } else {
+            setRoundDone(true);
+            console.log("out of words");
+            setRandomWord("Out of Words! Add Another Round or End Game!");
+          }
+
+          //make game continue to be playable
+        } else {
+          setRoundDone(true);
+          console.log("out of words");
+          setRandomWord("Out of Words! Add Another Round or End Game!");
         }
       }
-
-    } else {
-
     }
+
     setClockTime(setTime);
     setTimerInUse(false);
   };
