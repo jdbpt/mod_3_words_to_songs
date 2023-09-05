@@ -7,6 +7,9 @@ Let the words spark memories into songs as you race against the clock and perhap
 - App created by jdbpt (Jocelyn)
 - For Per Scholas  project in WISE program
 
+### Screenshots
+- TBD 
+
 ## Technologies Used
 
 - React
@@ -14,6 +17,21 @@ Let the words spark memories into songs as you race against the clock and perhap
 - VS Code
 - TBD
 
+### Installed Libraries (not all used)
+
+- axios
+- bcrypt
+- body-parser
+- concurrently
+- cors
+- dotenv
+- express
+- mongoose
+- morgan
+- nodemon
+- passport
+- passport-local
+- react-router-dom
 
 ## Credits/Inspirations
 
