@@ -13,7 +13,7 @@ const Settings = () => {
     const [chooseWords, setChooseWords] = useState(8);
     const [chooseTeams, setChooseTeams] = useState(0);
     const [choosePlayers, setChoosePlayers] = useState(1);
-    const [chooseTime, setChooseTime] = useState(1)
+    const [chooseTime, setChooseTime] = useState(10000)
 
     const [setUpDone, setSetUpDone] = useState(false);
     const [playStarted, setPlayStarted] = useState(false);
@@ -58,8 +58,11 @@ const Settings = () => {
             <Header />
             <Nav settings={true} />
             <div className='contents'>
-                <h2>Settings Page</h2>
-                <h3>See home for instructions if needed!</h3>
+                <div className={setUpDone ? "hidden" : ""} >
+                    <h2>Settings Page</h2>
+                    <h3>See home for instructions if needed!</h3>
+                </div>
+
                 <form className={setUpDone ? "hidden settings" : "settings"} action="" method="">
                     <fieldset>
                         <label htmlFor="numWords">Choose the number of Words per Round:</label>
@@ -67,15 +70,16 @@ const Settings = () => {
                             <option value={8}>8</option>
                             <option value={16}>16</option>
                             <option value={32}>32</option>
-                        </select><br/><br/>
+                        </select><br /><br />
 
                         <label htmlFor="timeSet">Set the timelimit to sing a song with the word:</label>
                         <select name="timeSet" value={chooseTime} onChange={handleChooseTimeChange} id="timeSet" required>
-                            <option value={10}>10 seconds</option>
-                            <option value={20}>20 seconds</option>
-                            <option value={30}>30 seconds</option>
-                            <option value={60}>1 minute</option> 
+                            <option value={10000}>10 seconds</option>
+                            <option value={20000}>20 seconds</option>
+                            <option value={30000}>30 seconds</option>
+                            <option value={60000}>1 minute</option>
                         </select>
+                        {console.log(chooseTime)}
                     </fieldset>
 
                     <fieldset>
@@ -85,7 +89,7 @@ const Settings = () => {
                             <option value={1}>One Team</option>
                             <option value={2}>Two Teams</option>
                             <option value={3}>Three Teams</option>
-                        </select><br/><br/>
+                        </select><br /><br />
 
                         <label htmlFor="playersNum">Number of players (1-6):</label>
                         <input type="number" id="playersNum" name="playersNum" min={1} max={6} value={choosePlayers} required onChange={handleChoosePlayersChange} />
@@ -96,7 +100,7 @@ const Settings = () => {
                 <button className={playStarted ? "hidden" : ""} onClick={() => onHandlePlay()}>Play</button>
                 {/**if setUpDone, then show the GameSpace */}
                 {setUpDone && <GameSpace players={choosePlayers} teams={chooseTeams} numWords={chooseWords} setTime={chooseTime} inactive={false} />}
-                {setUpDone && <button onClick={() => onReturnToSettings()}>Return To Settings</button>}
+                {setUpDone && <button className='fixedRight' onClick={() => onReturnToSettings()}>Return To Settings</button>}
 
             </div>
             <Footer />

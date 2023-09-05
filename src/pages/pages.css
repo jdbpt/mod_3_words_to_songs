@@ -78,6 +78,32 @@
     display: none;
 }
 
+
+
+.fixedRight{
+    position: fixed;
+    bottom: 125px;
+    right: 20px;
+    font-weight: bold;
+}
+
+.flexbox{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.randWord{
+    font-size: larger;
+    width: 500px;
+    background-color: #d1faff;
+    padding: 10px;
+}
+
+.timer{
+    font-size: 75px;
+}
+
 input[type=reset]{
     background-color: #35e7fc;
     width: 200px;
