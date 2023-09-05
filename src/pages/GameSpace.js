@@ -105,7 +105,7 @@ const GameSpace = (props) => {
         <h3>Round: {currentRound}</h3>
         {wordsLeft<=0&&<h2>End of Round {currentRound} reached! Check final scores to see the Winner!</h2>}
         <Timer />
-        {players >= 1 && <h3>Player {1} Score is:{showPlayer1Score}</h3>}
+        {players >= 1 && <h3 className='floatRight'>Player {1} Score is:{showPlayer1Score}</h3>}
         {players >= 2 && <h3>Player {1} Score is:{showPlayer1Score}</h3>}
         {players >= 3 && <h3>Player {1} Score is:{showPlayer1Score}</h3>}
         {players >= 4 && <h3>Player {1} Score is:{showPlayer1Score}</h3>}
