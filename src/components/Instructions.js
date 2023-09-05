@@ -7,15 +7,10 @@ const Instructions = () => {
       <h2>Where words spark memories into music!</h2>
       <h2>See instructions below:</h2>
       <h1>Instructions</h1>
-      <ul className='instructions'>
-        <li>At the GameSpace (navigation to the left)</li>
-        <li>Select the Number of Rounds 6, 10, or 14</li>
-        <li>The Select the Number of Players
-          <ul>
-            <li>You will be able to select previous player nicknames if there are some available to count in lifetime scores on the leaderboard</li>
-            <li>Or you can set new ones for new players</li>
-          </ul>
-        </li>
+      <ul className='instructions instr1'>
+        <li>At the Settings (navigation to the left)</li>
+        <li>Select the Number of Words per Round</li>
+        <li>Select the Number of Players</li>
         <li>Finally you will be prompted to set the time</li>
         <li>Hit Start when the first player is ready</li>
         <li>Next, the first player will sing a song with the shown random word in it<br />which comes from a bank of 100 words, within the timelimit</li>

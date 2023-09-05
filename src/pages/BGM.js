@@ -3,11 +3,11 @@ import Footer from '../components/Footer';
 import Header from '../components/Header';
 import Nav from '../components/Nav';
 import "./pages.css";
-const Leaderboard = () => {
+const BGM = () => {
   return (
     <div>
       <Header/>
-      <Nav leaderboard={true}/>
+      <Nav bgm={true}/>
       <div className='contents'>
         <h1>Leaderboard</h1>
       </div>
@@ -17,4 +17,4 @@ const Leaderboard = () => {
   )
 }
 
-export default Leaderboard;
+export default BGM;

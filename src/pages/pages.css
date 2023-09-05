@@ -59,7 +59,7 @@
     
 }
 
-.leaderboard, .home, .gamespace, .settings{
+.bgm, .home, .gamespace, .settings{
     color: white;
     font-weight: bold;
     word-wrap: break-word;
