@@ -14,10 +14,14 @@ Let the words spark memories into songs as you race against the clock and perhap
 - VS Code
 - TBD
 
+
 ## Credits/Inspirations
 
 - Project created by jdbpt (Jocelyn)
 - Project Inspired by Song Association by Elle [Elle Youtube Page](https://www.youtube.com/@ELLE)
+- Credit/Reference for much of YouTube API searchbar and display: [blog.bitsrc User: anarnotes Feb 4, 2019 posted in Bits and Pieces](https://blog.bitsrc.io/make-a-simple-react-app-with-using-youtube-api-68fa016e5a03)
+    - Among others: 
+        - TBD
 - Thanks to [Per Scholas](https://perscholas.org/) for the WISE program!
 
 

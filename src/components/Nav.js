@@ -6,8 +6,10 @@ const Nav = (props) => {
   return (
     <nav>
         <Link to='/home' className={props.home?"home":""}>HOME</Link>
-        <Link to='/gamespace' className={props.gamespace?"home":""}>GAME SPACE</Link>
-        <Link to='/leaderboard' className={props.leaderboard?"home":""}>LEADERBOARD</Link>
+        <Link to='/settings' className={props.settings?"settings":""}>GAME SETUP</Link>
+
+        {/* <Link to='/wordsToSongs' className={props.gamespace?"gamespace":""}>GAME SPACE</Link> */}
+        <Link to='/leaderboard' className={props.leaderboard?"leaderboard":""}>LEADERBOARD</Link>
     </nav>
   )
 };

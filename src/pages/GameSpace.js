@@ -117,7 +117,7 @@ const GameSpace = (props) => {
         <form>
           {/**Button for resubmitting the form with the same settings, play another round, this increments rounds on the page */}
           <label htmlFor="endCurrent">Return to Settings Page to start a New Game:</label><br/>
-          <button id="endCurrent" onClick={()=>{setEndGame(true); handleResetOrContinueGame()}}>End Game</button>
+          <button id="endCurrent" onClick={()=>{setEndGame(true); handleResetOrContinueGame()}}>End Game/Full Reset Game</button><br/>
 
           {/**Button to return back to settings page*/}
           <label htmlFor="moreRounds">Start a New Round with the same settings:</label><br/>
