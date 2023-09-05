@@ -115,6 +115,7 @@ input[type=reset]{
     height: 40px;
     margin: 10px;
     border: 3px solid #7b7b7b;
+    font-size: 20px;
     
 }
 
@@ -129,9 +130,16 @@ fieldset{
 
 input[type=number]{
     border: 5px solid #35e7fc ;
+    height: 35px;
+    width: 125px;
+    font-size: 20px;
 }
 
 select{
-    border: 5px solid #35e7fc ;
+    border: 5px solid #35e7fc;
+    height: 45px;
+    width: 125px;
+    font-size: 20px;
+
 
 }

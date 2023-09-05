@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Footer from '../components/Footer';
-import Header from '../components/Header';
 import { Words } from '../components/Words';
 import "./pages.css";
 import { Navigate } from 'react-router-dom';
@@ -157,10 +156,11 @@ const GameSpace = (props) => {
     if (continueGame) {
       //increment rounds, set words left back to numWords, setContinueGame false, reset back to current player/team
       setCurrentRound(prvRound => prvRound += 1);
+      setRoundDone(false);
       setWordsLeft(numWords);
       setContinueGame(false);
-      setCurrentPlayer("Player 1");
-      setCurrentTeam("Team 1")
+      setCurrentPlayer(PLAYER1);
+      setCurrentTeam(TEAM1)
     }
   };
 
@@ -168,30 +168,45 @@ const GameSpace = (props) => {
 
   const handleTeamRound = (won) => {
     setClockTime(setTime);
-      setTimerInUse(false);
+    setTimerInUse(false);
     if (won) {
-      
+
       if (currentTeam === TEAM1) {
-        setShowTeam1Score(prvscore => prvscore += 1);
+        setShowTeam1Score(prvscore => prvscore + 1);
       }
-      if (currentTeam === TEAM2) {
-        setShowTeam2Score(prvscore => prvscore += 1);
+      else if (currentTeam === TEAM2) {
+        setShowTeam2Score(prvscore => prvscore + 1);
       }
-      if (currentTeam === TEAM3) {
-        setShowTeam3Score(prvscore => prvscore += 1);
+      else if (currentTeam === TEAM3) {
+        setShowTeam3Score(prvscore => prvscore + 1);
       }
       if (wordsLeft <= 0) {
         if (teams > 0) {
-          if (currentTeam === TEAM1 && teams > 1) {
-            currentTeam(TEAM2);
-            setWordsLeft(numWords);
+          if (currentTeam === TEAM1) {
+            if (teams > 1) {
+              setCurrentTeam(TEAM2);
+              setWordsLeft(numWords);
+
+            } else {
+              setRoundDone(true);
+              console.log("out of words");
+              setRandomWord("Out of Words! Add Another Round or End Game!");
+            }
             //make game continue to be playable
             setRoundDone(false);
-          } else if (currentTeam === TEAM2 && teams > 2) {
-            currentTeam(TEAM3);
-            setWordsLeft(numWords);
+          } else if (currentTeam === TEAM2) {
+            if (teams > 2) {
+              setCurrentTeam(TEAM3);
+              setWordsLeft(numWords);
+              setRoundDone(false);
+
+            } else {
+              setRoundDone(true);
+              console.log("out of words");
+              setRandomWord("Out of Words! Add Another Round or End Game!");
+            }
+
             //make game continue to be playable
-            setRoundDone(false);
           } else {
             setRoundDone(true);
             console.log("out of words");
@@ -201,10 +216,10 @@ const GameSpace = (props) => {
       }
 
     } else {
-      //make game continue to be playable
-      setClockTime(setTime);
-      setTimerInUse(false);
+
     }
+    setClockTime(setTime);
+    setTimerInUse(false);
   };
 
   const handlePlayerRound = (won) => {
@@ -212,54 +227,87 @@ const GameSpace = (props) => {
     setTimerInUse(false);
     if (won) {
       if (currentPlayer === PLAYER1) {
-        setShowPlayer1Score(prvscore=>prvscore+=1);
+        setShowPlayer1Score(prvscore => prvscore + 1);
+
+
       }
-      if (currentPlayer === PLAYER2) {
-        setShowPlayer2Score(prvscore=>prvscore+=1);
+      else if (currentPlayer === PLAYER2) {
+        setShowPlayer2Score(prvscore => prvscore + 1);
+
+
       }
-      if (currentPlayer === PLAYER3) {
-        setShowPlayer3Score(prvscore=>prvscore+=1);
+      else if (currentPlayer === PLAYER3) {
+        setShowPlayer3Score(prvscore => prvscore + 1);
+
+
       }
-      if (currentPlayer === PLAYER4) {
-        setShowPlayer4Score(prvscore=>prvscore+=1);
+      else if (currentPlayer === PLAYER4) {
+        setShowPlayer4Score(prvscore => prvscore + 1);
       }
-      if (currentPlayer === PLAYER5) {
-        setShowPlayer5Score(prvscore=>prvscore+=1);
+      else if (currentPlayer === PLAYER5) {
+        setShowPlayer5Score(prvscore => prvscore + 1);
       }
-      if (currentPlayer === PLAYER6) {
-        setShowPlayer6Score(prvscore=>prvscore+=1);
+      else if (currentPlayer === PLAYER6) {
+        setShowPlayer6Score(prvscore => prvscore + 1);
       }
-      if (wordsLeft <= 0) {
-        if (currentPlayer === PLAYER1 && players > 1) {
-          currentPlayer(PLAYER2);
-          setWordsLeft(numWords);
-        } else if (currentPlayer === PLAYER2 && players > 2) {
-          currentTeam(PLAYER3);
-          setWordsLeft(numWords);
-        } else if (currentPlayer === PLAYER3 && players > 3) {
-          currentTeam(PLAYER4);
-          setWordsLeft(numWords);
-        } else if (currentPlayer === PLAYER4 && players > 4) {
-          currentTeam(PLAYER5);
-          setWordsLeft(numWords);
-        } else if (currentPlayer === PLAYER5 && players > 5) {
-          currentTeam(PLAYER6);
-          setWordsLeft(numWords);
-        } else {
-          setRoundDone(true);
-          console.log("out of words");
-          setRandomWord("Out of Words! Add Another Round or End Game!");
-        }
-      }
+      // if (wordsLeft <= 0) {
+     
+      // }
 
     } else {
-
+      //do nothing
     }
+    if (currentPlayer === PLAYER1) {
+      if (players > 1) {
+        setCurrentPlayer(PLAYER2);
+      }
 
+
+      // setWordsLeft(numWords);
+    } else if (currentPlayer === PLAYER2) {
+      if (players > 2) {
+        setCurrentPlayer(PLAYER3);
+
+      } else {
+        setCurrentPlayer(PLAYER1);
+      }
+      // setWordsLeft(numWords);
+    } else if (currentPlayer === PLAYER3) {
+      if (players > 3) {
+        setCurrentPlayer(PLAYER4);
+
+      } else {
+        setCurrentPlayer(PLAYER1);
+      }
+      // setWordsLeft(numWords);
+    } else if (currentPlayer === PLAYER4) {
+      if (players > 4) {
+        setCurrentPlayer(PLAYER5);
+
+      } else {
+        setCurrentPlayer(PLAYER1);
+      }
+      // setWordsLeft(numWords);
+    } else if (currentPlayer === PLAYER5) {
+      if (players > 5) {
+        setCurrentPlayer(PLAYER6);
+
+      } else {
+        setCurrentPlayer(PLAYER1);
+      }
+      // setWordsLeft(numWords);
+    }
+    else {
+      setRoundDone(true);
+      console.log("out of words");
+      setRandomWord("Out of Words! Add Another Round or End Game!");
+    }
 
     //make game continue to be playable
     setNextPlay(true);
-   
+    setClockTime(setTime);
+    setTimerInUse(false);
+
 
   };
 
@@ -314,7 +362,6 @@ const GameSpace = (props) => {
   return (
 
     <div>
-      <Header />
       <h2>Welcome to the Game Space</h2>
       <div className='gameContents'>
         <div className='flexbox'>
@@ -343,11 +390,11 @@ const GameSpace = (props) => {
             {teams === 3 && <h3>Player 3 Score is:{showPlayer1Score}</h3>}
 
             {players >= 1 && teams <= 0 && <h3>Player 1 Score is:{showPlayer1Score}</h3>}
-            {players >= 2 && teams <= 0 && <h3>Player 2 Score is:{showPlayer1Score}</h3>}
-            {players >= 3 && teams <= 0 && <h3>Player 3 Score is:{showPlayer1Score}</h3>}
-            {players >= 4 && teams <= 0 && <h3>Player 4 Score is:{showPlayer1Score}</h3>}
-            {players >= 5 && teams <= 0 && <h3>Player 5 Score is:{showPlayer1Score}</h3>}
-            {players >= 6 && teams <= 0 && <h3>Player 6 Score is:{showPlayer1Score}</h3>}
+            {players >= 2 && teams <= 0 && <h3>Player 2 Score is:{showPlayer2Score}</h3>}
+            {players >= 3 && teams <= 0 && <h3>Player 3 Score is:{showPlayer3Score}</h3>}
+            {players >= 4 && teams <= 0 && <h3>Player 4 Score is:{showPlayer4Score}</h3>}
+            {players >= 5 && teams <= 0 && <h3>Player 5 Score is:{showPlayer5Score}</h3>}
+            {players >= 6 && teams <= 0 && <h3>Player 6 Score is:{showPlayer6Score}</h3>}
           </div>
           <div>
 
@@ -370,12 +417,12 @@ const GameSpace = (props) => {
             <div className='clock'>
               <h1>Clock</h1>
               {/**call handleTime based on time provided, and display it */}
-              <h1 className="timer">{(clockTime / 1000).toFixed()>=0?(clockTime / 1000).toFixed():0}</h1>
-              {!timerInUse && <button onClick={() => {
+              <h1 className="timer">{(clockTime / 1000).toFixed() >= 0 ? (clockTime / 1000).toFixed() : 0}</h1>
+              {!timerInUse && !roundDone && <button onClick={() => {
                 setTimerInUse(true);
                 startTimer();
               }}>START TIMER</button>}
-             
+
               {/* <button onClick={() => resetTimer()}>Reset</button> */}
             </div>
 
@@ -387,7 +434,7 @@ const GameSpace = (props) => {
         <form>
           {/**Button for resubmitting the form with the same settings, play another round, this increments rounds on the page */}
           <label htmlFor="endCurrent">Return to Settings Page to start a New Game:</label><br />
-          <button id="endCurrent" onClick={() => { setEndGame(true); handleResetOrContinueGame() }}>End Game/Full Reset Game</button><br />
+          <button id="endCurrent" onClick={() => { setEndGame(true); handleResetOrContinueGame() }}>End Game</button><br />
 
           {/**Button to return back to settings page*/}
           <label htmlFor="moreRounds">Start a New Round with the same settings:</label><br />
