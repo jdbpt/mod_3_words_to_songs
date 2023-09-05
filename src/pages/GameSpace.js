@@ -1,108 +1,132 @@
 import React, { useState } from 'react';
-import Score from '../components/Score';
 import Timer from '../components/Timer';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
-import Rounds from '../components/Rounds';
 import { Words } from '../components/Words';
-import Nav from '../components/Nav';
 import "./pages.css";
+import { Navigate } from 'react-router-dom';
+
 //location where the game is being player
 //has the timer, score, and instructions, rounds
 
-const GameSpace = () => {
+const GameSpace = (props) => {
+  //Values pulled from Settings*****************
+  //help on useLocation and how to pass state via Navigate element: https://stackoverflow.com/questions/72896252/react-router-navigate-from-one-screen-to-another-does-not-pass-state-paramete
+  //https://dev.to/thatfemicode/passing-data-states-through-react-router-8dh#:~:text=Data%20known%20as%20state%20can,retrieved%20via%20the%20useLocation%20hook.
+
+  let players = props.players;
+  let teams = props.teams;
+  let numWords = props.numWords;
+  let inactive = props.inactive;
   const [randomWord, setRandomWord] = useState("");
+  const [wordsLeft, setWordsLeft] = useState(numWords);
+  const [currentRound, setCurrentRound] = useState(1);
+  const [continueGame, setContinueGame] = useState(false);
+  const [endGame, setEndGame] = useState(false);
   const randWords = Words;
 
-  const handleOnClick = () =>{
-    let randIndex = Math.floor(Math.random()*randWords.length);
-    setRandomWord(prvword => prvword=randWords[randIndex]);
-    console.log(randIndex);
-  };
-//submit form to start the game
-  const onHandleSubmit = () => {
+  const [showPlayer1Score, setShowPlayer1Score] = useState(0);
+  const [showPlayer2Score, setShowPlayer2Score] = useState(0);
+  const [showPlayer3Score, setShowPlayer3Score] = useState(0);
+  const [showPlayer4Score, setShowPlayer4Score] = useState(0);
+  const [showPlayer5Score, setShowPlayer5Score] = useState(0);
+  const [showPlayer6Score, setShowPlayer6Score] = useState(0);
 
+
+  const handleOnClick = () => {
+    let randIndex = Math.floor(Math.random() * randWords.length);
+    setRandomWord(prvword => prvword = randWords[randIndex]);
+    console.log(randIndex);
   };
 
   //reset button and setup new game button
-  const handleResetGame = (endGame) =>{
-    setUpDone = false;//unhide the form and reset the game
-    if(endGame === true){
-      //then open back up the form and reset settings, 
+  const handleResetOrContinueGame = () => {
+    if (endGame) {
+      //navigate back to the Settings Page
+      setEndGame(false);
+      return(<Navigate to='/Settings'/>);
     }
-  }
 
-  
+    if (continueGame){
+      //increment rounds, set words left back to numWords, setContinueGame false
+      setCurrentRound(prvRound=>prvRound+=1);
+      setWordsLeft(numWords);
+      setContinueGame(false);
+    }
+  };
 
-  //Settings*****************
-  //toggle to show or hid settings if ready to play
-  let setUpDone = false;
-  //hold number of rounds and when set, roundsChosen is true
-  let rounds = 0;
-  let roundsChosen = false;
-  //constants for number of round choices
-  const ROUNDNUM1 = 8;
-  const ROUNDNUM2 = 10;
-  const ROUNDNUM3 = 12;
 
-  const teams = 0;//no players
-  const teamsChosen = false;
-  //play default alternates players, unless teams is chosen
 
-  let players = 0;
-  let playersChosen = false;
-
-  //if database enabled and can save players, array allows for choosing saved players
-  let savedPlayers =  [];
-  let availableSavedPlayers = false;
-
-//array to hold scores per player
-//if database enabled allows for update of player scores if name matches on in database
+  //array to hold scores per player
+  //if database enabled allows for update of player scores if name matches on in database
   let scores = [
     {
-      player0:"",
-      score:""
+      name: "Player 1",
+      score: showPlayer1Score
     },
     {
-      player1:"",
-      score:""
+      name: "Player 2",
+      score: showPlayer2Score
     },
     {
-      player2:"",
-      score:""
+      name: "Player 3",
+      score: showPlayer3Score
     },
     {
-      player3:"",
-      score:""
+      name: "Player 4",
+      score: showPlayer4Score
     },
     {
-      player4:"",
-      score:""
+      name: "Player 5",
+      score: showPlayer5Score
     },
     {
-      player5:"",
-      score:""
+      name: "Player 6",
+      score: showPlayer6Score
     },
-    
+
   ];
 
-  
+
+
+
   return (
+    
     <div>
-      <Header/>
-      <Nav gamespace={true}/>
-      <div className='contents'>
-        <Timer/>
-        <Rounds round={2}/>
-        <Score score={2}/>
-        <button onClick={()=>handleOnClick()}>Random Word Generation</button>
-        <div className="randWord">{randomWord}</div>
-        {/* <Words/> */}
-        {/* <Players/> */}
-        
+      <Header />
+      <h2>Welcome to the Game Space</h2>
+
+      <div className='gameContents'>
+        <h3>Number of Players: {players}</h3>
+        <h3>Number of Teams: {teams}</h3>
+        {teams > 0 && <h3>Current Team: </h3>}
+        {teams > 0 && <h3>Number of Players: {players}</h3>}
+        {players > 1 && teams === 0 && <h3>Current Player: </h3>}
+        <h3>Round: {currentRound}</h3>
+        {wordsLeft<=0&&<h2>End of Round {currentRound} reached! Check final scores to see the Winner!</h2>}
+        <Timer />
+        {players >= 1 && <h3>Player {1} Score is:{showPlayer1Score}</h3>}
+        {players >= 2 && <h3>Player {1} Score is:{showPlayer1Score}</h3>}
+        {players >= 3 && <h3>Player {1} Score is:{showPlayer1Score}</h3>}
+        {players >= 4 && <h3>Player {1} Score is:{showPlayer1Score}</h3>}
+        {players >= 5 && <h3>Player {1} Score is:{showPlayer1Score}</h3>}
+        {players >= 6 && <h3>Player {1} Score is:{showPlayer1Score}</h3>}
+        <button onClick={() => handleOnClick()}>Random Word Generation</button>
+        <div className="randWord"><h1>{randomWord}</h1></div>
+    
+        <form>
+          {/**Button for resubmitting the form with the same settings, play another round, this increments rounds on the page */}
+          <label htmlFor="endCurrent">Return to Settings Page to start a New Game:</label><br/>
+          <button id="endCurrent" onClick={()=>{setEndGame(true); handleResetOrContinueGame()}}>End Game</button>
+
+          {/**Button to return back to settings page*/}
+          <label htmlFor="moreRounds">Start a New Round with the same settings:</label><br/>
+          <button id="moreRounds" onClick={()=>{setContinueGame(true); handleResetOrContinueGame()}}>Increment Rounds</button>
+        </form>
+
       </div>
-      <Footer/>
-      
+      <Footer />
+
 
     </div>
   )

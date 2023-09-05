@@ -48,14 +48,27 @@
     margin-top: 150px;
     margin-left: 150px;
     padding: 20px 20px 20px 20px;
-    height: 100vh;
+    height: 125vh;
+    
+}
+.gameContents{
+    background-color: white;
+    color: black;
+    margin-top: 0px;
+    margin-left: 0px;
+    /* padding: 20px 20px 20px 20px; */
+    /* height: 125vh; */
     
 }
 
-.leaderboard, .home, .gamespace{
+.leaderboard, .home, .gamespace, .settings{
     color: white;
     font-weight: bold;
     word-wrap: break-word;
     border: 5px solid #35e7fc;
     
+}
+
+.hidden{
+    display: none;
 }
