@@ -26,6 +26,30 @@
     float: left;
 }
 
+.video-list{
+    width: 200px;
+    height: 500px;
+    overflow: auto;    
+}
+
+.video-iframe{
+    width:560px;
+    height: 315px;
+}
+
+.videoFlex{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    border: 5px solid #35e7fc;
+    max-width: fit-content;
+    background-color: #e4e4e4;
+    padding: 20px;
+}
+
+.formSize{
+    width: 560px;
+}
 
 header{
     text-align: center;
@@ -117,6 +141,15 @@ button{
 button:active{
     transform: translateY(5px);
 }
+
+input[type=text]{
+    border: 2px solid #35e7fc ;
+    height: 30px;
+    width: 300px;
+    font-size: 15px;
+    margin-bottom: 10px;
+}
+
 
 
 
