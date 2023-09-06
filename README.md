@@ -15,7 +15,8 @@ Let the words spark memories into songs as you race against the clock and perhap
 - React
     -  [Create React App](https://github.com/facebook/create-react-app).
 - VS Code
-- TBD
+- YouTube API
+- pending
 
 ### Installed Libraries (not all used)
 
@@ -37,9 +38,9 @@ Let the words spark memories into songs as you race against the clock and perhap
 
 - Project created by jdbpt (Jocelyn)
 - Project Inspired by Song Association by Elle [Elle Youtube Page](https://www.youtube.com/@ELLE)
-- Credit/Reference for much of YouTube API searchbar and display: [blog.bitsrc User: anarnotes Feb 4, 2019 posted in Bits and Pieces](https://blog.bitsrc.io/make-a-simple-react-app-with-using-youtube-api-68fa016e5a03)
+- Credit/Reference for YouTube API searchbar and display: Coding Shiksha Aug 29, 2020[React.js Youtube Data API V3 Video Search Example Using Axios Full Tutorial For Beginners 2020](https://www.youtube.com/watch?v=44-Kx5ZZTsY&t=1s)
     - Among others: 
-        - TBD
+        - Caffiene Code Jun 2, 2022 [How To Make Youtube Clone Using ReactJS & Youtube Api | Youtube Clone React JS](https://www.youtube.com/watch?v=XWePdlCGTno)
 - Thanks to [Per Scholas](https://perscholas.org/) for the WISE program!
 
 
