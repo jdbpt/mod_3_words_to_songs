@@ -425,7 +425,7 @@ const GameSpace = (props) => {
           {/* <button onClick={() => handleOnClick()}>Random Word Generation</button> */}
           <div>
             {teams > 0 && <h3 className='current'>Current Team: {currentTeam}</h3>}
-            {players > 1 && teams === 0 && <h3 className='current'>Current Player: {currentPlayer} </h3>}
+            {players >= 1 && teams === 0 && <h3 className='current'>Current Player: {currentPlayer} </h3>}
 
               {/**if the round is done hide the clock and prevent a new word and timer from being started */}
             <div className={roundDone?'hidden clock':'clock'}>

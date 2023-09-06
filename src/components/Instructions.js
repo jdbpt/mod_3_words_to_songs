@@ -26,12 +26,12 @@ const Instructions = () => {
           <li>Next, the first player/team will sing a song with the shown random word in it<br />which comes from a bank of 100 words, within the timelimit</li>
           <li>If they are successful, hit yes, and their score will be updated</li>
           <li>Then Start when the next player is ready</li>
-          <li>To set up some BGM (background music), navigate to the BGM page and open it in a new tap</li>
+          <li>To set up some BGM (background music), navigate to the BGM page and right click to open it in a new tab</li>
           <li>Let those memories come alive with song!</li>
           <li>The winner will be listed at the end of the rounds at the click of a button!</li>
           <li>PS: Are you wondering if that song just sung really had that word in it?
             <ul>
-              <li>*Well then use the YouTube player to check if it really did on the BGM page!</li>
+              <li>*Well then use the YouTube player to check if it really did on the BGM page !</li>
             </ul>
           </li>
           <li>Or maybe you are not feeling like singing the song with the word it it, but instead you want to find a song with the word in it and play a snippet of the song with that word in the time limit?
