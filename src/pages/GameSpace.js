@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef } from 'react';
 import Footer from '../components/Footer';
 import { Words } from '../components/Words';
 import "./pages.css";
-import { Navigate } from 'react-router-dom';
 
 //location where the game is being player
 //has the timer, score, and instructions, rounds
@@ -48,7 +47,6 @@ const GameSpace = (props) => {
   const [wordsLeft, setWordsLeft] = useState(numWords);
   const [currentRound, setCurrentRound] = useState(1);
   const [continueGame, setContinueGame] = useState(false);
-  const [endGame, setEndGame] = useState(false);
   const [roundDone, setRoundDone] = useState(false);
   const [currentPlayer, setCurrentPlayer] = useState(PLAYER1);
   const [currentTeam, setCurrentTeam] = useState(TEAM1);
@@ -190,7 +188,7 @@ const GameSpace = (props) => {
 
     }
 
-    if(teams === 1){
+    if(teams == 1){
       setWinningTeam({teams: TEAM1, score: showTeam1Score});
     }
 
@@ -385,10 +383,13 @@ const GameSpace = (props) => {
             <h2>Round: {currentRound}</h2>
             {wordsLeft <= 0&&winner&& <h2>End of Round {currentRound} reached! Check final scores to see the Winner!</h2>}
             <br />
-
+            {console.log(teams + "are the teams active")}
             {/**display of the winner */}
-            {winner && teams > 0 && wordsLeft<=0&& <div>
+            {winner && teams > 1 && wordsLeft<=0&& <div>
               <h2>The Winner out of a total of {currentRound} round(s) is: {winningTeam.teams} with a score of {winningTeam.score} out of {numWords * currentRound} total words</h2>
+            </div>}
+            {winner && teams == 1 && wordsLeft<=0&& <div>
+              <h2>{winningTeam.teams} out of a total of {currentRound} round(s) has a score of: {winningTeam.score} out of {numWords * currentRound} total words</h2>
             </div>}
           
             {winner && teams === 0 && <div>
@@ -419,7 +420,7 @@ const GameSpace = (props) => {
               <button onClick={() => handleTeamRound(true)}>{!winner?"Yes":"Show Score"}</button> {!winner&&<button onClick={() => handleTeamRound(false)}>No</button>} </div>}
 
             {!nextPlay && teams === 0 && <div><h2>{wordsLeft>0?`Did ${currentPlayer} come up with a word in time?`:"Press button to Show Final Score"}</h2>
-              <button onClick={() => handlePlayerRound(true)}>{wordsLeft>0?"Yes":"Show Score"}</button> {wordsLeft>0&&<button onClick={() => handlePlayerRound(false)}>No</button>}</div>}
+              <button onClick={() => handlePlayerRound(true)}>{!winner?"Yes":"Show Score"}</button> {!winner&&<button onClick={() => handlePlayerRound(false)}>No</button>}</div>}
 
           </div>
           {/* <button onClick={() => handleOnClick()}>Random Word Generation</button> */}
