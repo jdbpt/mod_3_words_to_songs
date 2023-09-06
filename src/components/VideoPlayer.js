@@ -1,4 +1,5 @@
 import React from 'react'
+//code resource Coding Shiksha: https://www.youtube.com/watch?v=44-Kx5ZZTsY&t=1s
 
 const VideoPlayer = ({ videoId }) => {
 
