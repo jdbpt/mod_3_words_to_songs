@@ -3,6 +3,7 @@ import SignHeader from '../components/SignHeader';
 import { Link } from 'react-router-dom';
 import "./pages.css";
 import logo from "../images/wordToSongsLogo.png"
+//no mongodb added functions as a welcome page
 
 const SignUp = () => {
   return (

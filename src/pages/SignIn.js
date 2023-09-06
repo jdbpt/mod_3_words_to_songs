@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import SignHeader from '../components/SignHeader';
 import "./pages.css";
 import logo from "../images/wordToSongsLogo.png"
-
+//no mongodb added, functions as a Welcome page
 
 const SignIn = () => {
   return (
