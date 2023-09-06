@@ -5,7 +5,7 @@ const VideoPlayer = ({ videoId }) => {
     if(!videoId){
         return (
             <div>
-                <h2>Search for Video</h2>
+                <h2>Video Player</h2>
             </div>
           )
     }

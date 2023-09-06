@@ -134,8 +134,8 @@
 
 .flexContents{
     display: flex;
-    justify-content: center;
 }
+
 input[type=reset]{
     background-color: #35e7fc;
     width: 200px;

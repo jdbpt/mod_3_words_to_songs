@@ -6,7 +6,7 @@ const Footer = () => {
       <div>
         <div>
           <h3>Words to Songs: Where words spark memories into music Created by jdbpt</h3>
-          <h3>With Use of YouTube API</h3>
+          <h3>With Use of YouTube API <a href='https://www.youtube.com/t/terms' target='blank'  className='outlinks'>YouTube Terms of Service</a></h3>
         </div>
         <div>
           <h3>Inspired by "Song Association" on the <a href='https://www.youtube.com/@ELLE' target='blank' className='outlinks'>Elle YouTube Page</a></h3>

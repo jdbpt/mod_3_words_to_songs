@@ -33,14 +33,21 @@ const BGM = () => {
       <Header />
       <Nav bgm={true} />
       <div className='contents'>
-        <h1>BGM</h1>
-        <h2>The Place for that Musical Inspiration</h2>
-        <h3>Also to test if those lyrics were really in that song</h3>
+        <h1>BGM: The Place for that Musical Inspiration</h1>
+       <h3>(Also to test if those lyrics were really in that song)</h3>
+       <h2>BGM prepared for this game as you play</h2>
 
-        <h2>BGM prepared for this game as you play</h2>
-        <audio src=""></audio>
+       <audio controls loop>
+        <source src="" type="audio/ogg"/>
+        <source src="" type="audio/mpeg"/>
+        Your browser does not support the audio element.
+      </audio>
 
-        <h2>YouTube Player</h2>
+      <hr/>
+      <br/>
+        
+
+        <h2>YouTube Player*</h2>
         <div className='flexContents'>
         <div className='videoFlex'>
           <div>

@@ -26,8 +26,8 @@ const Search = (props) => {
        <form onSubmit={onSubmit}>
         <div className="form-controls">
           <h2>YouTube Search*</h2>
-          <label htmlFor="searching">Search</label>
-          <input value={searchValue} onChange={onSearchChanged} id="searching" type='text' placeholder='Search for Videos'/>
+          <label htmlFor="searching">Explore Videos</label>&nbsp;
+          <input value={searchValue} onChange={onSearchChanged} id="searching" type='text' placeholder=''/>
         </div>
         
        </form>

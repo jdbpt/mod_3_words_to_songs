@@ -44,10 +44,9 @@
 .videoFlex{
     display: flex;
     flex-direction: row;
-    justify-content: center;
     border: 5px solid #35e7fc;
+    border-radius: 5px;
     max-width: fit-content;
-    background-color: #e4e4e4;
     padding: 20px;
 }
 
@@ -145,6 +144,10 @@ button{
 button:active{
     transform: translateY(5px);
 }
+button:hover{
+    background-color: #7b7b7b;
+    color: white;
+}
 
 input[type=text]{
     border: 2px solid #35e7fc ;
@@ -152,6 +155,7 @@ input[type=text]{
     width: 300px;
     font-size: 15px;
     margin-bottom: 10px;
+    background-color: #d1faff;
 }
 
 

@@ -25,7 +25,7 @@ const Instructions = () => {
           <li>Hit Start when the first player to team is ready</li>
           <li>Next, the first player/team will sing a song with the shown random word in it<br />which comes from a bank of 100 words, within the timelimit</li>
           <li>If they are successful, hit yes, and their score will be updated</li>
-          <li>Then Start when the next player is ready</li>
+          <li>Then Start Timer when the next player is ready</li>
           <li>To set up some BGM (background music), navigate to the BGM page and right click to open it in a new tab</li>
           <li>Let those memories come alive with song!</li>
           <li>The winner will be listed at the end of the rounds at the click of a button!</li>
