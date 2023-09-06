@@ -7,6 +7,8 @@ import Header from '../components/Header';
 import Nav from '../components/Nav';
 import Search from '../components/Search';
 import "./pages.css";
+import songM from "../music/wordsToSongs.mp3";
+import songO from "../music/wordsToSongs.ogg";
 //code resource Coding Shiksha: https://www.youtube.com/watch?v=44-Kx5ZZTsY&t=1s
 const BGM = () => {
   const [videoMetaInfo, setVideoMetaInfo] = useState([]);
@@ -38,10 +40,10 @@ const BGM = () => {
 
         <div className='flexContents'>
           <div>
-            <audio controls loop>
-              <source src="" type="audio/ogg" />
-              <source src="" type="audio/mpeg" />
-              Your browser does not support the audio element.
+            <audio  controls loop>
+              <source src={songM} type="audio/mp3"/>
+              <source src={songO} type="audio/ogg"/>
+              Your browser does not support audio player
             </audio>
           </div>
           &nbsp;

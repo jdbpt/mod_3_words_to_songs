@@ -18,7 +18,7 @@ Let the words spark memories into songs as you race against the clock and perhap
     -  [Create React App](https://github.com/facebook/create-react-app).
 - VS Code
 - YouTube API
-- pending
+- Audacity (game bgm)
 
 ### Installed Libraries (not all used)
 
