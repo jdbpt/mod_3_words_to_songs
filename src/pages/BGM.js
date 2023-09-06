@@ -14,7 +14,7 @@ const BGM = () => {
   const onVideoSelected = (videoId) => {
     setSelectedVideoId(videoId);
   };
-  
+
   const onSearch = async (keyword) => {
     const response = await youtubeApi.get("/search", {
       params: {
@@ -34,31 +34,40 @@ const BGM = () => {
       <Nav bgm={true} />
       <div className='contents'>
         <h1>BGM: The Place for that Musical Inspiration</h1>
-       <h3>(Also to test if those lyrics were really in that song)</h3>
-       <h2>BGM prepared for this game as you play</h2>
+        <h3>(Also to test if those lyrics were really in that song)</h3>
 
-       <audio controls loop>
-        <source src="" type="audio/ogg"/>
-        <source src="" type="audio/mpeg"/>
-        Your browser does not support the audio element.
-      </audio>
-
-      <hr/>
-      <br/>
-        
-
-        <h2>YouTube Player*</h2>
         <div className='flexContents'>
-        <div className='videoFlex'>
           <div>
-            <Search onSearch={onSearch} />
-            <VideoPlayer videoId={selectedVideoId} />
+            <audio controls loop>
+              <source src="" type="audio/ogg" />
+              <source src="" type="audio/mpeg" />
+              Your browser does not support the audio element.
+            </audio>
           </div>
+          &nbsp;
           <div>
-            <VideoList onVideoSelected={onVideoSelected} data={videoMetaInfo} />
+            <h2>BGM file prepared for this game as you play</h2>
 
           </div>
         </div>
+
+
+        <hr />
+        <br />
+
+
+        <h2>YouTube Player*</h2>
+        <div className='flexContents'>
+          <div className='videoFlex'>
+            <div>
+              <Search onSearch={onSearch} />
+              <VideoPlayer videoId={selectedVideoId} />
+            </div>
+            <div>
+              <VideoList onVideoSelected={onVideoSelected} data={videoMetaInfo} />
+
+            </div>
+          </div>
         </div>
 
 
