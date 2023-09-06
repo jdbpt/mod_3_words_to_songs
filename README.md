@@ -8,9 +8,9 @@ Let the words spark memories into songs as you race against the clock and perhap
 - For Per Scholas  project in WISE program
 
 ### Screenshots
-![Screenshot of the Home page of game](./assets/mod3HomeScreenShot.png)
+![Screenshot of the Home page of game](./assets/wordsToSongsInstructions.png)
 
-![Screenshot of the Setting page of Game Setup of the game](./assets/mod3SettingsScreenShot.png)
+![Screenshot of the Setting page of Game Setup of the game](./assets/wordsToSongsSettings.png)
 
 ## Technologies Used
 
@@ -19,6 +19,7 @@ Let the words spark memories into songs as you race against the clock and perhap
 - VS Code
 - YouTube API
 - Audacity (game bgm)
+- Corel Painter Student Edition 2021 (Words to Songs logo)
 
 ### Installed Libraries (not all used)
 
