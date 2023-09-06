@@ -82,7 +82,7 @@
 
 .fixedRight{
     position: fixed;
-    bottom: 100px;
+    top: 150px;
     right: 15px;
     font-weight: bold;
 }
@@ -106,8 +106,9 @@
     font-size: 75px;
 }
 .clock{
-    width: 200px;
+    width: 100px;
     height: 350px;
+    border-radius: 4px;
 }
 
 .timer{
@@ -117,6 +118,18 @@
 .displayInstr{
     display: flex;
     flex-direction: row;
+}
+
+.scores{
+    width: 300px;
+    word-wrap: break-word;
+    font-size: 20px;
+}
+
+.current{
+    font-size: 30px;
+    word-wrap: break-word;
+    
 }
 input[type=reset]{
     background-color: #35e7fc;

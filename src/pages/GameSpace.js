@@ -136,6 +136,66 @@ const GameSpace = (props) => {
     }
   };
 
+  //to show the winning team/player
+  const handleWinningPlayer = () => {
+    if (roundDone && winner && teams <= 1) {
+      let playersArray = [showPlayer1Score, showPlayer2Score, showPlayer3Score, showPlayer4Score, showPlayer5Score, showPlayer6Score];
+      
+      let winners = "";
+      let max = playersArray[0];
+      for (let index = 0; index < players; index++) {
+        const element = playersArray[index];
+        if(element>max){
+          max=element;
+        } 
+      };
+
+
+      for (let index = 0; index < players; index++) {
+        const element = playersArray[index];
+        if(element === max){
+          winners += " " + AVAILPLAYERS[index];
+        }
+      };
+
+      //setWinningPlayer
+      setWinningPlayer({players: winners, score: max});
+
+    }
+  };
+
+  const handleWinningTeam = () => {
+    if (teams > 1) {
+      let teamsArray = [showTeam1Score, showTeam2Score, showTeam3Score];
+      
+      let winners = "";
+      let max = teamsArray[0];
+      for (let index = 0; index < teams; index++) {
+        const element = teamsArray[index];
+        if(element>max){
+          max=element;
+        } 
+      };
+
+
+      for (let index = 0; index < teams; index++) {
+        const element = teamsArray[index];
+        if(element === max){
+          winners += " " + AVAILTEAMS[index];
+        }
+      };
+
+      //setWinningPlayer
+      setWinningTeam({teams: winners, score: max});
+
+    }
+
+    if(teams === 1){
+      setWinningTeam({teams: TEAM1, score: showTeam1Score});
+    }
+
+  };
+
   //handle gameplay for teams round and players round
 
   const handleTeamRound = (won) => {
@@ -166,42 +226,52 @@ const GameSpace = (props) => {
           if (teams > 1) {
             setCurrentTeam(TEAM2);
             setWordsLeft(numWords);
+            setRoundDone(false);
+            setNextPlay(true);
+            setClockTime(setTime);
+            setTimerInUse(false);
+            return;
 
           } else {
             setCurrentTeam("");
             setRoundDone(true);
             setWinner(true);
-            handleWinningTeam();
+            // handleWinningTeam();
             console.log("out of words");
             setRandomWord("Out of Words! Add Another Round or End Game!");
-            return;
           }
-          //make game continue to be playable
-          setRoundDone(false);
+          
         } else if (currentTeam === TEAM2) {
           if (teams > 2) {
             setCurrentTeam(TEAM3);
             setWordsLeft(numWords);
             setRoundDone(false);
+            setNextPlay(true);
+            setClockTime(setTime);
+            setTimerInUse(false);
+            return;
 
           } else {
             setCurrentTeam("");
             setRoundDone(true);
             setWinner(true);
-            handleWinningTeam();
+            // handleWinningTeam();
             console.log("out of words");
             setRandomWord("Out of Words! Add Another Round or End Game!");
-            return;
           }
 
-        } else {
+        } else if (currentTeam === TEAM3) {
           setCurrentTeam("");
           setRoundDone(true);
           setWinner(true);
-          handleWinningTeam();
+          // handleWinningTeam();
           console.log("out of words");
           setRandomWord("Out of Words! Add Another Round or End Game!");
+        } else{
+          handleWinningTeam();
           return;
+
+
         }
       }
     }else{//if words greater than 0, then continue play for the current team
@@ -301,67 +371,7 @@ const GameSpace = (props) => {
 
   };//handlePlayerRound
 
-  //to show the winning team/player
-  const handleWinningPlayer = () => {
-    if (roundDone && winner && teams <= 1) {
-      let playersArray = [showPlayer1Score, showPlayer2Score, showPlayer3Score, showPlayer4Score, showPlayer5Score, showPlayer6Score];
-      
-      let winners = "";
-      let max = playersArray[0];
-      for (let index = 0; index < players; index++) {
-        const element = playersArray[index];
-        if(element>max){
-          max=element;
-        } 
-      };
-
-
-      for (let index = 0; index < players; index++) {
-        const element = playersArray[index];
-        if(element === max){
-          winners += " " + AVAILPLAYERS[index];
-        }
-      };
-
-      //setWinningPlayer
-      setWinningPlayer({players: winners, score: max});
-
-    }
-  };
-
-  const handleWinningTeam = () => {
-    if (roundDone && winner && teams > 1) {
-      let teamsArray = [showTeam1Score, showTeam2Score, showTeam3Score];
-      
-      let winners = "";
-      let max = teamsArray[0];
-      for (let index = 0; index < teams; index++) {
-        const element = teamsArray[index];
-        if(element>max){
-          max=element;
-        } 
-      };
-
-
-      for (let index = 0; index < teams; index++) {
-        const element = teamsArray[index];
-        if(element === max){
-          winners += " " + AVAILTEAMS[index];
-        }
-      };
-
-      //setWinningPlayer
-      setWinningTeam({teams: winners, score: max});
-
-    
-
-    }
-
-    if(roundDone && winner && teams === 1){
-      setWinningTeam({teams: TEAM1, score: showTeam1Score});
-    }
-
-  };
+  
 
 
 
@@ -371,13 +381,13 @@ const GameSpace = (props) => {
       <h1>Welcome to the Game Space</h1>
       <div className='gameContents'>
         <div className='flexbox'>
-          <div>
-            <h1>Round: {currentRound}</h1>
+          <div className='scores'>
+            <h2>Round: {currentRound}</h2>
             {wordsLeft <= 0&&winner&& <h2>End of Round {currentRound} reached! Check final scores to see the Winner!</h2>}
             <br />
 
             {/**display of the winner */}
-            {winner && teams > 0 && <div>
+            {winner && teams > 0 && wordsLeft<=0&& <div>
               <h2>The Winner out of a total of {currentRound} round(s) is: {winningTeam.teams} with a score of {winningTeam.score} out of {numWords * currentRound} total words</h2>
             </div>}
           
@@ -403,10 +413,10 @@ const GameSpace = (props) => {
 
           </div>
           <div className="randWord">
-            <h1>{timerInUse ? randomWord : "WORD SPACE"}</h1>
-            {console.log(nextPlay)}
+            <h1>{timerInUse ? randomWord : "WORDS"}</h1>
+            {console.log(winner+" ****************")}
             {!nextPlay && teams > 0 && <div><h2>Did {currentTeam} come up with a word in time?</h2>
-              <button onClick={() => handleTeamRound(true)}>{!nextPlay?"Yes":"Show Score"}</button> {!nextPlay&&<button onClick={() => handleTeamRound(false)}>No</button>} </div>}
+              <button onClick={() => handleTeamRound(true)}>{!winner?"Yes":"Show Score"}</button> {!winner&&<button onClick={() => handleTeamRound(false)}>No</button>} </div>}
 
             {!nextPlay && teams === 0 && <div><h2>{wordsLeft>0?`Did ${currentPlayer} come up with a word in time?`:"Press button to Show Final Score"}</h2>
               <button onClick={() => handlePlayerRound(true)}>{wordsLeft>0?"Yes":"Show Score"}</button> {wordsLeft>0&&<button onClick={() => handlePlayerRound(false)}>No</button>}</div>}
@@ -414,8 +424,8 @@ const GameSpace = (props) => {
           </div>
           {/* <button onClick={() => handleOnClick()}>Random Word Generation</button> */}
           <div>
-            {teams > 0 && <h3>Current Team: {currentTeam}</h3>}
-            {players > 1 && teams === 0 && <h3>Current Player: {currentPlayer} </h3>}
+            {teams > 0 && <h3 className='current'>Current Team: {currentTeam}</h3>}
+            {players > 1 && teams === 0 && <h3 className='current'>Current Player: {currentPlayer} </h3>}
 
               {/**if the round is done hide the clock and prevent a new word and timer from being started */}
             <div className={roundDone?'hidden clock':'clock'}>
@@ -435,13 +445,6 @@ const GameSpace = (props) => {
 
           </div>
         </div>
-
-
-
-        
-
-         
-        
 
       </div>
       <Footer />
