@@ -136,6 +136,10 @@
     display: flex;
 }
 
+.bigLogo{
+    height: 250px;
+}
+
 input[type=reset]{
     background-color: #35e7fc;
     width: 200px;
