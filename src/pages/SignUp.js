@@ -9,6 +9,7 @@ const SignUp = () => {
       <SignHeader/>
       <div className='sign'>
         <h2>Sign Up</h2>
+        <h2>Welcome!</h2>
         <Link to="/home">Home</Link>
       </div>
       

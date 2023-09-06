@@ -8,8 +8,9 @@ const SignIn = () => {
     <div>
       <SignHeader/>
       <div className='sign'>
-        <h3>New User?</h3>
+        <h3>Wecome back!</h3>
         <Link to="/home">Home</Link>
+        <h3>New User?</h3>
         <Link to="/signup">Sign Up</Link>
       </div>
       
