@@ -82,8 +82,8 @@
 
 .fixedRight{
     position: fixed;
-    bottom: 125px;
-    right: 20px;
+    bottom: 100px;
+    right: 15px;
     font-weight: bold;
 }
 
@@ -91,23 +91,33 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+
 }
 
 .randWord{
-    font-size: larger;
+   
     width: 500px;
     background-color: #d1faff;
     padding: 10px;
+    text-align: center;
 }
 
+.randWord > h1{
+    font-size: 75px;
+}
 .clock{
     width: 200px;
+    height: 350px;
 }
 
 .timer{
     font-size: 75px;
 }
 
+.displayInstr{
+    display: flex;
+    flex-direction: row;
+}
 input[type=reset]{
     background-color: #35e7fc;
     width: 200px;

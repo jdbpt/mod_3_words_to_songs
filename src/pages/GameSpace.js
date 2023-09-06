@@ -31,16 +31,18 @@ const GameSpace = (props) => {
 
   const AVAILPLAYERS = [
     PLAYER1,
-  PLAYER2,
-  PLAYER3,
-  PLAYER4,
-  PLAYER5,
-  PLAYER6]
+    PLAYER2,
+    PLAYER3,
+    PLAYER4,
+    PLAYER5,
+    PLAYER6
+  ];
 
   const AVAILTEAMS = [
     TEAM1, 
-    TEAM2, TEAM3
-  ]
+    TEAM2,
+    TEAM3
+  ];
 
   const [randomWord, setRandomWord] = useState("");
   const [wordsLeft, setWordsLeft] = useState(numWords);
@@ -54,11 +56,8 @@ const GameSpace = (props) => {
   //if winner is true, then winningPlayer or team is shown, else not shown
   const [winner, setWinner] = useState(false);
   const [winningPlayer, setWinningPlayer] = useState({ players: "", score: "" });
-  const [winningTeam, setWinningTeam] = useState({ team: "", score: "" });
+  const [winningTeam, setWinningTeam] = useState({ teams: "", score: "" });
   const randWords = Words;
-
-
-
 
   const [showTeam1Score, setShowTeam1Score] = useState(0);
   const [showTeam2Score, setShowTeam2Score] = useState(0);
@@ -101,13 +100,7 @@ const GameSpace = (props) => {
       setTimerInUse(false);
     }
 
-  }//handle time
-
-  const resetTimer = () => {
-    setClockTime(0);
-    setTimerInUse(false);
-    clearInterval(timer.current);
-  }
+  };//startTimer
 
 
   //game controlls 
@@ -121,49 +114,13 @@ const GameSpace = (props) => {
       console.log(randIndex);
     } else {
       console.log("no more words to choose randomly in handleRandomWord");
-      // if(teams>0){
-      //   if(currentTeam===TEAM1 && teams>1){
-      //     currentTeam(TEAM2);
-      //     setWordsLeft(numWords);
-      //   }else if(currentTeam===TEAM2 && teams>2){
-      //     currentTeam(TEAM3);
-      //     setWordsLeft(numWords);
-      //   } else{
-      //     console.log("out of words");
-      //     setRandomWord("Out of Words! Add Another Round or End Game!");
-      //   }
-      // } else{
-      // if (currentPlayer === PLAYER1 && players > 1) {
-      //   currentPlayer(PLAYER2);
-      //   setWordsLeft(numWords);
-      // } else if (currentPlayer === PLAYER2 && players > 2) {
-      //   currentTeam(PLAYER3);
-      //   setWordsLeft(numWords);
-      // } else if (currentPlayer === PLAYER3 && players > 3) {
-      //   currentTeam(PLAYER4);
-      //   setWordsLeft(numWords);
-      // } else if (currentPlayer === PLAYER4 && players > 4) {
-      //   currentTeam(PLAYER5);
-      //   setWordsLeft(numWords);
-      // } else if (currentPlayer === PLAYER5 && players > 5) {
-      //   currentTeam(PLAYER6);
-      //   setWordsLeft(numWords);
-      // } else {
-      //   console.log("out of words");
-      //   setRandomWord("Out of Words! Add Another Round or End Game!");
-      // }
-      // }
+      
     }
 
   };
 
   //reset button and setup new game button
   const handleResetOrContinueGame = () => {
-    if (endGame) {
-      //navigate back to the Settings Page
-      setEndGame(false);
-      return (<Navigate to='/Settings' />);
-    }
 
     if (continueGame) {
       //increment rounds, set words left back to numWords, setContinueGame false, reset back to current player/team
@@ -173,11 +130,13 @@ const GameSpace = (props) => {
       setWordsLeft(numWords);
       setContinueGame(false);
       setCurrentPlayer(PLAYER1);
-      setCurrentTeam(TEAM1)
+      setCurrentTeam(TEAM1);
+      setNextPlay(true);
+      setClockTime(setTime);
     }
   };
 
-  //handle gameplay
+  //handle gameplay for teams round and players round
 
   const handleTeamRound = (won) => {
     setClockTime(setTime);
@@ -199,7 +158,9 @@ const GameSpace = (props) => {
     }
 
     //handle ending the game and changing teams
+    //if words left less than or equal to zero, handle switching teams, however, if final team then end game
     if (wordsLeft <= 0) {
+      
       if (teams > 0) {
         if (currentTeam === TEAM1) {
           if (teams > 1) {
@@ -207,10 +168,13 @@ const GameSpace = (props) => {
             setWordsLeft(numWords);
 
           } else {
+            setCurrentTeam("");
             setRoundDone(true);
             setWinner(true);
+            handleWinningTeam();
             console.log("out of words");
             setRandomWord("Out of Words! Add Another Round or End Game!");
+            return;
           }
           //make game continue to be playable
           setRoundDone(false);
@@ -221,25 +185,32 @@ const GameSpace = (props) => {
             setRoundDone(false);
 
           } else {
+            setCurrentTeam("");
             setRoundDone(true);
             setWinner(true);
+            handleWinningTeam();
             console.log("out of words");
             setRandomWord("Out of Words! Add Another Round or End Game!");
+            return;
           }
 
-          //make game continue to be playable
         } else {
+          setCurrentTeam("");
           setRoundDone(true);
           setWinner(true);
+          handleWinningTeam();
           console.log("out of words");
           setRandomWord("Out of Words! Add Another Round or End Game!");
+          return;
         }
       }
+    }else{//if words greater than 0, then continue play for the current team
+      setNextPlay(true);
+      setClockTime(setTime);
+      setTimerInUse(false);
     }
-
-    setClockTime(setTime);
-    setTimerInUse(false);
-  };
+   
+  };//handleTeamRound
 
   const handlePlayerRound = (won) => {
     setClockTime(setTime);
@@ -269,9 +240,6 @@ const GameSpace = (props) => {
       else if (currentPlayer === PLAYER6) {
         setShowPlayer6Score(prvscore => prvscore + 1);
       }
-      // if (wordsLeft <= 0) {
-     
-      // }
 
     } else {
       //do nothing
@@ -331,11 +299,9 @@ const GameSpace = (props) => {
       return;
     }
 
-    
+  };//handlePlayerRound
 
-
-  };
-
+  //to show the winning team/player
   const handleWinningPlayer = () => {
     if (roundDone && winner && teams <= 1) {
       let playersArray = [showPlayer1Score, showPlayer2Score, showPlayer3Score, showPlayer4Score, showPlayer5Score, showPlayer6Score];
@@ -365,7 +331,34 @@ const GameSpace = (props) => {
 
   const handleWinningTeam = () => {
     if (roundDone && winner && teams > 1) {
+      let teamsArray = [showTeam1Score, showTeam2Score, showTeam3Score];
+      
+      let winners = "";
+      let max = teamsArray[0];
+      for (let index = 0; index < teams; index++) {
+        const element = teamsArray[index];
+        if(element>max){
+          max=element;
+        } 
+      };
 
+
+      for (let index = 0; index < teams; index++) {
+        const element = teamsArray[index];
+        if(element === max){
+          winners += " " + AVAILTEAMS[index];
+        }
+      };
+
+      //setWinningPlayer
+      setWinningTeam({teams: winners, score: max});
+
+    
+
+    }
+
+    if(roundDone && winner && teams === 1){
+      setWinningTeam({teams: TEAM1, score: showTeam1Score});
     }
 
   };
@@ -375,7 +368,7 @@ const GameSpace = (props) => {
   return (
 
     <div>
-      <h2>Welcome to the Game Space</h2>
+      <h1>Welcome to the Game Space</h1>
       <div className='gameContents'>
         <div className='flexbox'>
           <div>
@@ -384,41 +377,38 @@ const GameSpace = (props) => {
             <br />
 
             {/**display of the winner */}
-            {winner && teams > 1 && <div>
-              <h2>The Winner out of a total of {currentRound} round(s) is: {winningTeam.team} with a score of {winningTeam.score} out of {numWords * currentRound} total words</h2>
+            {winner && teams > 0 && <div>
+              <h2>The Winner out of a total of {currentRound} round(s) is: {winningTeam.teams} with a score of {winningTeam.score} out of {numWords * currentRound} total words</h2>
             </div>}
-            {winner && teams === 1 && <div>
-              <h2>The high score out of {currentRound} round(s) is: {winningTeam.score} out of {numWords * currentRound} total words</h2>
-            </div>}
+          
             {winner && teams === 0 && <div>
               <h2>The Winner out of a total of {currentRound} round(s) is: {winningPlayer.players} with a score of {winningPlayer.score} out of {numWords * currentRound} total words</h2>
             </div>}
 
             <h3>Number of Players: {players}</h3>
             <h3>Number of Teams: {teams}</h3>
-            {teams > 0 && <h3>Number of Players: {players}</h3>}
-            {/**only show players if teams is 0, otherwise show teams */}
-            {teams === 1 && <h3>Player 1 Score is:{showPlayer1Score}</h3>}
-            {teams === 2 && <h3>Player 2 Score is:{showPlayer1Score}</h3>}
-            {teams === 3 && <h3>Player 3 Score is:{showPlayer1Score}</h3>}
+            
+            {teams >= 1 && <h3>Team 1 Score is: {showTeam1Score}</h3>}
+            {teams >= 2 && <h3>Team 2 Score is: {showTeam2Score}</h3>}
+            {teams >= 3 && <h3>Team 3 Score is: {showTeam3Score}</h3>}
 
-            {players >= 1 && teams <= 0 && <h3>Player 1 Score is:{showPlayer1Score}</h3>}
-            {players >= 2 && teams <= 0 && <h3>Player 2 Score is:{showPlayer2Score}</h3>}
-            {players >= 3 && teams <= 0 && <h3>Player 3 Score is:{showPlayer3Score}</h3>}
-            {players >= 4 && teams <= 0 && <h3>Player 4 Score is:{showPlayer4Score}</h3>}
-            {players >= 5 && teams <= 0 && <h3>Player 5 Score is:{showPlayer5Score}</h3>}
-            {players >= 6 && teams <= 0 && <h3>Player 6 Score is:{showPlayer6Score}</h3>}
+            {players >= 1 && teams <= 0 && <h3>Player 1 Score is: {showPlayer1Score}</h3>}
+            {players >= 2 && teams <= 0 && <h3>Player 2 Score is: {showPlayer2Score}</h3>}
+            {players >= 3 && teams <= 0 && <h3>Player 3 Score is: {showPlayer3Score}</h3>}
+            {players >= 4 && teams <= 0 && <h3>Player 4 Score is: {showPlayer4Score}</h3>}
+            {players >= 5 && teams <= 0 && <h3>Player 5 Score is: {showPlayer5Score}</h3>}
+            {players >= 6 && teams <= 0 && <h3>Player 6 Score is: {showPlayer6Score}</h3>}
           </div>
           <div>
 
           </div>
           <div className="randWord">
-            <p>Display</p><h1>{timerInUse ? randomWord : "WORD SPACE"}</h1>
+            <h1>{timerInUse ? randomWord : "WORD SPACE"}</h1>
             {console.log(nextPlay)}
             {!nextPlay && teams > 0 && <div><h2>Did {currentTeam} come up with a word in time?</h2>
-              <button onClick={() => handleTeamRound(true)}>Yes</button> <button onClick={() => handleTeamRound(false)}>No</button> </div>}
+              <button onClick={() => handleTeamRound(true)}>{!nextPlay?"Yes":"Show Score"}</button> {!nextPlay&&<button onClick={() => handleTeamRound(false)}>No</button>} </div>}
 
-            {!nextPlay && teams === 0 && <div><h2>{wordsLeft>0?"Did {currentPlayer} come up with a word in time?":"Press button to Show Final Score"}</h2>
+            {!nextPlay && teams === 0 && <div><h2>{wordsLeft>0?`Did ${currentPlayer} come up with a word in time?`:"Press button to Show Final Score"}</h2>
               <button onClick={() => handlePlayerRound(true)}>{wordsLeft>0?"Yes":"Show Score"}</button> {wordsLeft>0&&<button onClick={() => handlePlayerRound(false)}>No</button>}</div>}
 
           </div>
@@ -439,21 +429,19 @@ const GameSpace = (props) => {
 
               {/* <button onClick={() => resetTimer()}>Reset</button> */}
             </div>
+             {/**Button to return back to settings page*/}
+          {winner&&<><h3>Start a New Round with the Same Settings:</h3>
+          <button id="moreRounds" onClick={() => { setContinueGame(true); handleResetOrContinueGame() }}>Increment Rounds</button></>}
 
           </div>
         </div>
 
 
 
-        <form>
-          {/**Button for resubmitting the form with the same settings, play another round, this increments rounds on the page */}
-          <label htmlFor="endCurrent">Return to Settings Page to start a New Game:</label><br />
-          <button id="endCurrent" onClick={() => { setEndGame(true); handleResetOrContinueGame() }}>End Game</button><br />
+        
 
-          {/**Button to return back to settings page*/}
-          <label htmlFor="moreRounds">Start a New Round with the same settings:</label><br />
-          <button id="moreRounds" onClick={() => { setContinueGame(true); handleResetOrContinueGame() }}>Increment Rounds</button>
-        </form>
+         
+        
 
       </div>
       <Footer />
