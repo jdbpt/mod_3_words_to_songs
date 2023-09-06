@@ -8,9 +8,8 @@ Let the words spark memories into songs as you race against the clock and perhap
 - For Per Scholas  project in WISE program
 
 ### Screenshots
-- Home
 ![Screenshot of the Home page of game](./assets/mod3HomeScreenShot.png)
-- Settings
+
 ![Screenshot of the Setting page of Game Setup of the game](./assets/mod3SettingsScreenShot.png)
 
 ## Technologies Used
