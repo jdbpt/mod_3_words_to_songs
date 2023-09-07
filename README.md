@@ -37,6 +37,10 @@ Let the words spark memories into songs as you race against the clock and perhap
 - passport-local
 - react-router-dom
 
+## UI/Art Inspiration
+
+- SingStar video games (Pop especially) Developer London Studio, Publisher Sony Interactive
+
 ## Credits/Inspirations
 
 - Project created by jdbpt (Jocelyn)
