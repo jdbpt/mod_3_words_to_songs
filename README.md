@@ -7,7 +7,7 @@ Let the words spark memories into songs as you race against the clock and perhap
 - App created by jdbpt (Jocelyn)
 - For Per Scholas  project in WISE program
 
-## Video Tour
+## Video Tour (For Pending YouTube Channel: FinerExcuses)
 
 [Words to Songs Video Tour](https://drive.google.com/file/d/1ZXkLkhqRSoF_DXKk4kgox4m5ywZvYf34/view?usp=sharing)
 
