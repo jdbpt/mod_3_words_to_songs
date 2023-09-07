@@ -44,7 +44,7 @@ Let the words spark memories into songs as you race against the clock and perhap
 
 ## UI/Art Inspiration
 
-- SingStar video games (Pop especially) Developer London Studio, Publisher Sony Interactive
+- SingStar video games (Pop especially) Developer: London Studio, Publisher: Sony Interactive
 
 ## Credits/Inspirations
 
@@ -57,8 +57,8 @@ Let the words spark memories into songs as you race against the clock and perhap
 
 ## Known Errors
 
-- Some times issues loading the GameSpace, if this occurs Return to Settings button, or go Home then back to Game Setup to continue with play
-    - However, this error may have related to having a duplicate Footer that has sense been deleted
+- Sometimes issues loading the GameSpace, if this occurs Return to Settings button, or go Home then back to Game Setup to continue with play
+    - However, this error may have related to having a duplicate Footer that has since been deleted
 
 ## Fixed Errors
 
