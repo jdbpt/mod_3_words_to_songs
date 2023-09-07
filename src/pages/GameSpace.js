@@ -447,7 +447,7 @@ const GameSpace = (props) => {
 
           </div>
         </div>
-        <Link className="fixedRight visit" to="/gamesetup/*" reloadDocument={true}>Return to Settings</Link>
+        <Link className="fixedRight visit" to="/gamesetup" reloadDocument={true}>Return to Settings</Link>
 
       </div>
       <Footer />
