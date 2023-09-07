@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from 'react';
-import Footer from '../components/Footer';
 import { Words } from '../components/Words';
 import "./pages.css";
 import { Link } from 'react-router-dom';
@@ -450,7 +449,6 @@ const GameSpace = (props) => {
         <Link className="fixedRight visit" to="/gamesetup" reloadDocument={true}>Return to Settings</Link>
 
       </div>
-      <Footer />
 
 
     </div>

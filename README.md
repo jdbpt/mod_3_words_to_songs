@@ -7,10 +7,15 @@ Let the words spark memories into songs as you race against the clock and perhap
 - App created by jdbpt (Jocelyn)
 - For Per Scholas  project in WISE program
 
+## Video Tour
+
+[Words to Songs Video Tour](https://drive.google.com/file/d/1ZXkLkhqRSoF_DXKk4kgox4m5ywZvYf34/view?usp=sharing)
+
 ### Screenshots
 ![Screenshot of the Home page of game](./assets/wordsToSongsInstructions.png)
 
 ![Screenshot of the Setting page of Game Setup of the game](./assets/wordsToSongsSettings.png)
+
 
 ## Technologies Used
 
@@ -50,6 +55,13 @@ Let the words spark memories into songs as you race against the clock and perhap
         - Caffiene Code Jun 2, 2022 [How To Make Youtube Clone Using ReactJS & Youtube Api | Youtube Clone React JS](https://www.youtube.com/watch?v=XWePdlCGTno)
 - Thanks to [Per Scholas](https://perscholas.org/) for the WISE program!
 
+## Known Errors
 
+- Some times issues loading the GameSpace, if this occurs Return to Settings button, or go Home then back to Game Setup to continue with play
+    - However, this error may have related to having a duplicate Footer that has sense been deleted
+
+## Fixed Errors
+
+- Fixed: Background Music has been changed to BACKGROUND MUSIC for Nav consistency
 
 
