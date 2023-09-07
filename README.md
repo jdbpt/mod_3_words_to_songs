@@ -22,7 +22,7 @@ Let the words spark memories into songs as you race against the clock and perhap
 - React
     -  [Create React App](https://github.com/facebook/create-react-app).
 - VS Code
-- YouTube API
+- YouTube Data API
 - Audacity (game bgm)
 - Corel Painter Student Edition 2021 (Words to Songs logo)
 
