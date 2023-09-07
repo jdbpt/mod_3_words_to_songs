@@ -6,6 +6,7 @@ import Nav from '../components/Nav';
 import "./pages.css";
 import GameSpace from './GameSpace';
 
+
 //location where the game is being player
 //has the timer, score, and instructions, rounds
 
@@ -42,11 +43,7 @@ const Settings = () => {
 
     };
 
-    const onReturnToSettings = () => {
-        setSetUpDone(false);
-        setPlayStarted(false);
-    }
-
+ 
 
 
 
@@ -100,7 +97,6 @@ const Settings = () => {
                 <button className={playStarted ? "hidden" : ""} onClick={() => onHandlePlay()}>Play</button>
                 {/**if setUpDone, then show the GameSpace */}
                 {setUpDone && <GameSpace players={choosePlayers} teams={chooseTeams} numWords={chooseWords} setTime={chooseTime} inactive={false} />}
-                {setUpDone && <button className='fixedRight' onClick={() => onReturnToSettings()}>Return To Settings</button>}
 
             </div>
             <Footer />

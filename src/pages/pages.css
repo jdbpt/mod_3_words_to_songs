@@ -140,6 +140,40 @@
     height: 250px;
 }
 
+.visit{
+    color: black;
+    width: 200px;
+    height: 40px;
+    border-radius: 50px;
+    border: 3px solid #7b7b7b;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.visit:link{
+    color: black;
+    text-decoration: none;
+    background-color: #35e7fc;
+
+}
+.visit:visited{
+    text-decoration: none;
+    background-color: #35e7fc;
+}
+.visit:hover{
+    text-decoration: none;
+    color: white;
+    background-color:#7b7b7b;
+    ;
+}
+.visit:active{
+    text-decoration: none;
+    background-color: #7b7b7b;
+}
+
+
 input[type=reset]{
     background-color: #35e7fc;
     width: 200px;
